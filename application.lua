@@ -4,7 +4,7 @@ doorStatus = "Unknown"
 doorState = "Unknown"
 fanDetail = "Unknown"
 coopLightDetail = "Unknown"
-runLightDetail = "Un known"
+runLightDetail = "Unknown"
 airTemp = "Unknown";
 print("Start web server")
 srv=net.createServer(net.TCP)
@@ -40,7 +40,7 @@ srv:listen(80,function(conn)
 						html = "{RequestStatus:\"OK\"}"
 					else
 						-- local html = "HTTP/1.1 200 OK\r\nContent-type: text/html\r\n"
-                        html = "<div><h1>Command sent to Arduino</h1></div>"
+                                                html = "<div><h1>Command sent to Arduino</h1></div>"
 					end
 					conn:send(html)
 				end
@@ -72,8 +72,8 @@ end
 
 -- Arduino reports back
 function updateVariables(strStatus, strPosition, strFan, strCoopLight, strRunLight, strTemp)
-	doorStatus = strStatus
-	doorState = strPosition
+    doorStatus = strStatus
+    doorState = strPosition
     fanDetail = strFan
     coopLightDetail = strCoopLight
     runLightDetail = strRunLight
