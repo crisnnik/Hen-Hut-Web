@@ -10,7 +10,7 @@ end
 
 print("Connecting to WiFi access point...")
 wifi.setmode(wifi.STATION)
-wifi.sta.config('CASTLEWIFI', 'B0st0nR3dS0x')
+wifi.sta.config('xxxxxxxxxx', 'xxxxxxxxxx')
 wifi.sta.connect()
 tmr.alarm(1, 1000, 1, function()
     if wifi.sta.getip() == nil then
