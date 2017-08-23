@@ -4,7 +4,7 @@ doorStatus = "Unknown"
 doorState = "Unknown"
 fanDetail = "Unknown"
 coopLightDetail = "Unknown"
-runLightDetail = "Unknown"
+runLightDetail = "Un known"
 airTemp = "Unknown";
 print("Start web server")
 srv=net.createServer(net.TCP)
@@ -12,14 +12,14 @@ srv:listen(80,function(conn)
     conn:on("receive",function(conn,payload)
 		local request = createRequest(payload)
 		local cmd = ""
-        local html = "HTTP/1.1 200 OK\r\nContent-type: text/html\r\n"
+                local html = "HTTP/1.1 200 OK\r\nContent-type: text/html\r\n"
 		-- html = html .. "Connection: close\r\n\r\n"
 		if request ~= null then
 			cmd = string.sub(request.path, 2, string.len(request.path))
-            if(cmd ~= "favicon.ico") then
+                            if(cmd ~= "favicon.ico") then
 				if string.find(request.path, "GetStatusAsJson") ~= nil then
 					html = "{Status:\"" .. doorStatus .. "\",Door:\"" .. doorState .. "\",Fan:\"" .. fanDetail .. "\",Coop Light:\"" .. coopLightDetail .. "\",Run Light:\"" .. runLightDetail .. "\",Coop Temp:\"" .. airtemp .. "\"}"
-                    --html = "{Coop Door:\"" .. doorState .. "\",Coop Temp:\"".. airtemp .. "\"}"
+                                        --html = "{Coop Door:\"" .. doorState .. "\",Coop Temp:\"".. airtemp .. "\"}"
 					conn:send(html)
 				elseif string.find(request.path, "GetStatus") ~= nil then
 					-- local html = "HTTP/1.1 200 OK\r\nContent-type: text/html\r\n"
@@ -28,8 +28,8 @@ srv:listen(80,function(conn)
 					html = html .. "<h2>Status: " .. doorStatus
 					html = html .. "<br />Coop Door: " .. doorState
 					html = html .. "<br />Vent Fan: " .. fanDetail
-                    html = html .. "<br />Coop Light: " .. coopLightDetail
-                    html = html .. "<br />Run Light: " .. runLightDetail
+                                        html = html .. "<br />Coop Light: " .. coopLightDetail
+                                        html = html .. "<br />Run Light: " .. runLightDetail
 					html = html .. "<br />Coop Temp: " .. airTemp .. " F</h2>"
 					html = html .. "<div><h1>Actions:</h1></div>"
 					html = html .. "<h2><a href=\"/OpenDoor\">Open Door</a><br><a href=\"/CloseDoor\">Close Door</a><br><a href=\"/ToggleCoop\">Toggle Coop Light</a><br><a href=\"/ToggleRun\">Toggle Run Light</a><br><a href=\"/GetStatus\">Refresh Status</a></h2></html>"
