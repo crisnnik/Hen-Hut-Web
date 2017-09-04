@@ -10,7 +10,13 @@ end
 
 print("Connecting to WiFi access point...")
 wifi.setmode(wifi.STATION)
-wifi.sta.config('xxxxxxxxxx', 'xxxxxxxxxx')
+
+--connect to Access Point (DO NOT save config to flash)
+station_cfg={}
+station_cfg.ssid="xxxxxxxx"
+station_cfg.pwd="xxxxxxxx"
+wifi.sta.config(station_cfg)
+
 wifi.sta.connect()
 tmr.alarm(1, 1000, 1, function()
     if wifi.sta.getip() == nil then
